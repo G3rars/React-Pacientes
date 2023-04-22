@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Form from './components/Form';
 import ListPatients from "./components/ListPatients";
 import { useState, useEffect } from "react";
-import Patients from './components/Patients';
+
 
 
 
@@ -11,32 +11,22 @@ import Patients from './components/Patients';
 
 function App() {
 
-  const [patients, setPatients] = useState([])
+  const [patients, setPatients] = useState( () => {
+
+    const patientsStorage = JSON.parse(localStorage.getItem('patients')) ?? [];
+    return patientsStorage;
+    
+  });
 
 
 
   const [patient, setPatient] = useState({})
 
-  useEffect (() => {
-const getLocalStorage = () => {
-  
-  const patientsStorage = JSON.parse(localStorage.getItem('patients')) ?? [];
-
-  setPatients(patientsStorage)
-}
-
-getLocalStorage()
-    
-
- }, [])
-
 
  useEffect (() => {
 
-  if (patients.length > 0) {
-    
     localStorage.setItem('patients', JSON.stringify(patients));
-  }
+  
 }, [patients]);
 
   

@@ -42,8 +42,8 @@ const Form = ({ setPatients, patients, patient }) => {
       alert("Debes rellenar todos los campos");
       setError(true);
     
-    
-    }
+    }else{
+
 
       
     const newPatient = {
@@ -70,7 +70,7 @@ const Form = ({ setPatients, patients, patient }) => {
     }
 
     resetForm();
-  };
+  }};
 
   return (
     <div className="md:w-1/2 lg:w-2/5 mb-7">
